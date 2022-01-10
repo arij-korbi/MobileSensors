@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.widget.TextView;
 
 public class Accelerometer {
     public interface Listener
@@ -19,7 +20,7 @@ public class Accelerometer {
     private SensorManager sensorManager;
     private Sensor sensor;
     private SensorEventListener sensorEventListener;
-
+    float x,y,z;
     Accelerometer(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(sensor.TYPE_LINEAR_ACCELERATION);
@@ -30,6 +31,11 @@ public class Accelerometer {
                  {
                      listener.onTranslation(sensorEvent.values[0],sensorEvent.values[1],sensorEvent.values[2]);
                  }
+                 x=sensorEvent.values[0];
+                y=sensorEvent.values[1];
+                z=sensorEvent.values[2];
+
+
             }
 
             @Override

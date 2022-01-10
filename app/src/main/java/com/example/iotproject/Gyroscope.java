@@ -19,7 +19,7 @@ public class Gyroscope {
     private SensorManager sensorManager;
     private Sensor sensor;
     private SensorEventListener sensorEventListener;
-
+   float x,y,z;
     Gyroscope(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(sensor.TYPE_GYROSCOPE);
@@ -29,7 +29,12 @@ public class Gyroscope {
                 if(listener!=null)
                 {
                     listener.onRotation(sensorEvent.values[0],sensorEvent.values[1],sensorEvent.values[2]);
+                    x=sensorEvent.values[0];
+                    y=sensorEvent.values[1];
+                    z=sensorEvent.values[2];
                 }
+
+
             }
 
             @Override
